@@ -1,0 +1,45 @@
+CREATE GLOBAL CUBE [cubo_DIM744676]
+STORAGE 'C:\Temp\DIM744676.cub'
+FROM [DIM744676_cube]
+(
+    MEASURE [DIM744676_cube].[Almacen],
+    MEASURE [DIM744676_cube].[Cantidad],
+    MEASURE [DIM744676_cube].[Cantidad U Med Inv],
+    MEASURE [DIM744676_cube].[Fact Facturas Count],
+    MEASURE [DIM744676_cube].[Partida],
+    MEASURE [DIM744676_cube].[Pct Descuento],
+    MEASURE [DIM744676_cube].[Pct Descuento Global],
+    MEASURE [DIM744676_cube].[Pct Impuesto],
+    MEASURE [DIM744676_cube].[Precio],
+    MEASURE [DIM744676_cube].[Precio Estandarizado],
+    MEASURE [DIM744676_cube].[Rac IVA],
+    
+    MEASURE [DIM744676_cube].[Total Descuento Detalle],
+    MEASURE [DIM744676_cube].[Total Descuento Detalle Estandarizado],
+    MEASURE [DIM744676_cube].[Total Descuento Factura],
+    MEASURE [DIM744676_cube].[Total Descuento Factura Estandarizado],
+
+    MEASURE [DIM744676_cube].[Total Detalle],
+    MEASURE [DIM744676_cube].[Total Detalle Estandarizado],
+    MEASURE [DIM744676_cube].[Total Factura],
+    MEASURE [DIM744676_cube].[Total Factura Estandarizado],
+
+    MEASURE [DIM744676_cube].[Total Importe Detalle],
+    MEASURE [DIM744676_cube].[Total Importe Detalle Estandarizado],
+    MEASURE [DIM744676_cube].[Total Importe Factura],
+    MEASURE [DIM744676_cube].[Total Importe Factura Estandarizado],
+
+    MEASURE [DIM744676_cube].[Total Impuesto Detalle],
+    MEASURE [DIM744676_cube].[Total Impuesto Detalle Estandarizado],
+
+    MEASURE [DIM744676_cube].[Total Retencion],
+    MEASURE [DIM744676_cube].[Total Retencion Estandarizado],
+
+    DIMENSION [DIM744676_cube].[Dim Articulos],
+    DIMENSION [DIM744676_cube].[Dim Clientes],
+    DIMENSION [DIM744676_cube].[Dim Condicion Pago],
+    DIMENSION [DIM744676_cube].[Dim Medio Embarque],
+    DIMENSION [DIM744676_cube].[Dim Sub Facturas],
+    DIMENSION [DIM744676_cube].[Dim Time],
+    DIMENSION [DIM744676_cube].[Dim Vendedores]
+)
