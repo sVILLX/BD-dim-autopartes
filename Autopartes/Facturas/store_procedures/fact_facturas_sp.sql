@@ -1,14 +1,14 @@
 ALTER PROCEDURE [dbo].[fact_facturas_sp] AS
 BEGIN
     SELECT 
-        fe.[Folio]
+        TRIM(fe.[Folio]) as Folio
         ,fd.[Partida]
-        ,fe.[Empresa]
-        ,fd.[Articulo]
-        ,UPPER(fe.[Cliente]) as Cliente
-        ,fe.[Vendedor]
-        ,fe.[MedioEmbarque]
-        ,fe.[CondicionPago]
+        ,TRIM(fe.[Empresa]) as Empresa
+        ,TRIM(fd.[Articulo]) as Articulo
+        ,UPPER(TRIM(fe.[Cliente])) as Cliente
+        ,TRIM(fe.[Vendedor]) as Vendedor
+        ,TRIM(fe.[MedioEmbarque]) as MedioEmbarque
+        ,TRIM(fe.[CondicionPago]) as CondicionPago
         ,CAST(CONVERT(varchar(8), fe.Fecha, 112) as int) as TimeID
 
         ,fe.[TotalImporte] as TotalImporteFactura
@@ -62,23 +62,23 @@ BEGIN
             ELSE fd.[TotalImpuesto]
         END AS TotalImpuestoDetalleEstandarizado
 
-        ,fd.[DescripcionArticulo]
+        ,TRIM(fd.[DescripcionArticulo]) as DescripcionArticulo
         ,fd.[Cantidad]
-        ,fd.[Almacen]
+        ,TRIM(fd.[Almacen]) as Almacen
         ,fd.[Precio]
         ,CASE fe.[Moneda] 
             WHEN 'P' THEN fd.[Precio] / 17.00
             WHEN 'ER' THEN fd.[Precio] / 0.93
             ELSE fd.[Precio]
         END AS PrecioEstandarizado
-        ,fd.[UMedPartida]
+        ,TRIM(fd.[UMedPartida]) UMedPartida
         ,fd.[CantidadUMedInv]
         ,fd.[pctDescuento]
         ,fd.[pctImpuesto]
 
         ,fe.[pctDescuentoGlobal]
-        ,fe.[RacIVA]
-        ,fe.[Moneda]
+        ,TRIM(fe.[RacIVA]) as RacIVA
+        ,TRIM(fe.[Moneda]) as Moneda
     FROM [AutopartesO2025].[dbo].[FacturaEncabezado] fe
     LEFT JOIN [AutopartesO2025].[dbo].[FacturaDetalle] fd 
         on fe.Folio = fd.Folio AND fe.Empresa = fd.Empresa
