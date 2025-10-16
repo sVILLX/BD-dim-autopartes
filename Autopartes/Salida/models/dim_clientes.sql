@@ -18,6 +18,6 @@ SELECT
     ,COALESCE(TRIM(c.[ZonaVenta]), 'Not in source') as ZonaVenta
 FROM [AutopartesO2025].[dbo].[Cliente] c
 LEFT JOIN [AutopartesO2025].[dbo].[ClienteTipo] ct
-	on c.ClienteTipo = ct.Clave
+    on c.ClienteTipo = ct.Clave
 UNION ALL 
-SELECT 'Not in source', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A'
+SELECT 'Not in source', 'N/A', 'N/A', 'N/A', 'N/A', -1, -1, 'N/A', 'N/A', 'N/A', -1, 'N/A', 'N/A', 'N/A'

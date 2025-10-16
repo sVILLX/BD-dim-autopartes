@@ -3,7 +3,7 @@ CREATE TABLE fact_facturas (
 	Partida INT,
 	Empresa NVARCHAR(50),
 	Articulo NVARCHAR(50),
-	Cliente INT,
+	Cliente NVARCHAR(50),
 	Vendedor INT,
 	MedioEmbarque NVARCHAR(50),
 	CondicionPago NVARCHAR(50),
