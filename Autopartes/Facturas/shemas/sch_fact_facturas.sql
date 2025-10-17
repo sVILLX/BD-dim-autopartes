@@ -35,5 +35,7 @@ CREATE TABLE fact_facturas (
 	pctDecuento INT,
 	pctDescuentoGlobal INT,
 	RacIVA INT,
-	Moneda NVARCHAR(50)
+	Moneda NVARCHAR(50),
+	CantidadPartidas INT,
+	count_facturas DECIMAL(18,0)
 )

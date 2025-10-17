@@ -27,6 +27,19 @@ SELECT
     ,sd.[TotalImpuesto] as TotalImpuestoDetalle
     ,TRIM(sd.[Ubicacion]) as Ubicacion
     ,UPPER(TRIM(sd.[UMedPartida])) as UMedPartida
+    ,1 as CantidadPartidas
+    ,(1.0/sub.NumeroPartidas) as count_salidas
 FROM [AutopartesO2025].[dbo].[SalidaEncabezado] se
 LEFT JOIN [AutopartesO2025].[dbo].[SalidaDetalle] sd
     ON se.Folio = sd.Folio and se.Empresa = sd.Empresa
+
+LEFT JOIN (
+    SELECT 
+        se.Folio
+        ,COUNT(sd.Partida) as NumeroPartidas
+    FROM [AutopartesO2025].[dbo].[SalidaEncabezado] se
+    LEFT JOIN [AutopartesO2025].[dbo].[SalidaDetalle] sd
+        ON se.Folio = sd.Folio and se.Empresa = sd.Empresa
+    GROUP BY se.Folio
+) AS sub 
+    ON se.Folio = sub.Folio

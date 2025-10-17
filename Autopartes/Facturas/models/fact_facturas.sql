@@ -32,6 +32,19 @@ SELECT
     ,COALESCE(fe.[pctDescuentoGlobal], 0.0) as pctDescuentoGlobal
     ,TRIM(fe.[RacIVA]) as RacIVA
     ,TRIM(fe.[Moneda]) as Moneda
+    ,1 as CantidadPartidas
+    ,(1.0/sub.NumeroPartidas) as count_facturas
 FROM [AutopartesO2025].[dbo].[FacturaEncabezado] fe
 LEFT JOIN [AutopartesO2025].[dbo].[FacturaDetalle] fd 
-    on fe.Folio = fd.Folio AND fe.Empresa = fd.Empresa
+    ON fe.Folio = fd.Folio AND fe.Empresa = fd.Empresa
+
+LEFT JOIN (
+    SELECT
+        fe.Folio
+        ,COUNT(fd.Partida) as NumeroPartidas
+    FROM [AutopartesO2025].[dbo].[FacturaEncabezado] fe
+    JOIN [AutopartesO2025].[dbo].[FacturaDetalle] fd 
+        ON fe.Folio = fd.Folio AND fe.Empresa = fd.Empresa
+    GROUP BY fe.Folio
+) AS sub
+    ON fe.Folio = sub.Folio

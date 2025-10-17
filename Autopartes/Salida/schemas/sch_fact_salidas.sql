@@ -26,5 +26,7 @@ CREATE TABLE fact_salidas (
     TotalImporteDetalle MONEY,
     TotalImpuestoDetalle MONEY,
     Ubicacion INT,
-    UMedPartida NVARCHAR(50)
+    UMedPartida NVARCHAR(50),
+    CantidadPartidas INT,
+    count_salidas DECIMAL(18,0)
 )
